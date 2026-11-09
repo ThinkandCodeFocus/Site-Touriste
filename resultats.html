@@ -1,0 +1,453 @@
+<!-- /*
+* Template Name: Tour
+* Template Author: Untree.co
+* Tempalte URI: https://untree.co/
+* License: https://creativecommons.org/licenses/by/3.0/
+*/ -->
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Agence - Billet Avion Dakar">
+  <link rel="shortcut icon" href="favicon.png">
+
+  <meta name="description" content="Agence - Billet Avion Dakar : billets d'avion au départ de Dakar (DSS), packages Omra et Hajj, réservation d'hôtel, assistance visa et assurance voyage. Paiement Wave, Orange Money, espèces ou carte." />
+  <meta name="keywords" content="billet avion Dakar, agence de voyage Dakar, vol Dakar Paris, Omra, Hajj, Sénégal" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+  <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+  <link rel="stylesheet" href="css/daterangepicker.css">
+  <link rel="stylesheet" href="css/aos.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <title>Résultats de recherche | Agence - Billet Avion Dakar</title>
+</head>
+
+<body>
+
+
+  <div class="site-mobile-menu site-navbar-target">
+    <div class="site-mobile-menu-header">
+      <div class="site-mobile-menu-close">
+        <span class="icofont-close js-menu-toggle"></span>
+      </div>
+    </div>
+    <div class="site-mobile-menu-body"></div>
+  </div>
+
+  <nav class="site-nav">
+    <div class="container">
+      <div class="site-navigation">
+        <a href="index.html" class="logo m-0">Billet Avion Dakar <span class="text-primary">.</span></a>
+
+        <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
+          <li><a href="index.html">Accueil</a></li>
+          <li class="has-children">
+            <a href="#">Destinations</a>
+            <ul class="dropdown">
+              <li><a href="elements.html">Infos pratiques</a></li>
+              <li><a href="index.html#offres">Offres du moment</a></li>
+              <li class="has-children">
+                <a href="#">Afrique</a>
+                <ul class="dropdown">
+                  <li><a href="resultats.html?arrivee=ABJ&amp;ar=1">Abidjan</a></li>
+                  <li><a href="resultats.html?arrivee=CMN&amp;ar=1">Casablanca</a></li>
+                  <li><a href="resultats.html?arrivee=BKO&amp;ar=1">Bamako</a></li>
+                </ul>
+              </li>
+              <li><a href="resultats.html?arrivee=JED&amp;ar=1">Djeddah (Omra)</a></li>
+            </ul>
+          </li>
+          <li><a href="services.html">Nos services</a></li>
+          <li><a href="about.html">À propos</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
+          <span></span>
+        </a>
+
+      </div>
+    </div>
+  </nav>
+
+  <style>
+    .res-card { background: #fff; border-radius: 10px; box-shadow: 0 2px 12px rgba(26, 55, 77, .08); }
+    .res-search .form-control, .res-search .custom-select { height: 46px; }
+    .res-summary { display: flex; flex-wrap: wrap; }
+    .res-summary > div { padding: 20px 24px; }
+    .res-summary .res-route { flex: 1 1 320px; border-right: 2px dashed #e6e6e6; }
+    .res-summary .res-total { flex: 1 1 240px; }
+    .res-summary .res-arrow { display: inline-block; width: 60px; height: 2px; background: #1A374D; vertical-align: middle; margin: 0 8px; position: relative; }
+    .res-summary .res-arrow:after { content: ""; position: absolute; right: -2px; top: -4px; border: 5px solid transparent; border-left-color: #1A374D; }
+    .res-filters .custom-select { border-color: #1A374D; color: #1A374D; }
+    .res-band { background: #6998AB; color: #fff; font-weight: 700; padding: 8px 14px; text-transform: uppercase; letter-spacing: .03em; border-radius: 6px 6px 0 0; }
+    .flight { position: relative; padding: 28px 20px 18px; border-bottom: 1px solid #eee; display: flex; flex-wrap: wrap; align-items: center; }
+    .flight:last-child { border-bottom: 0; }
+    .flight .badge-tag { position: absolute; top: 0; left: 0; background: #6998AB; color: #fff; font-size: 11px; font-weight: 700; padding: 3px 8px; text-transform: uppercase; }
+    .flight .f-airline { flex: 1 1 170px; }
+    .flight .f-times { flex: 2 1 330px; display: flex; align-items: center; justify-content: center; text-align: center; }
+    .flight .f-times .t { font-size: 22px; font-weight: 700; color: #1A374D; line-height: 1.1; }
+    .flight .f-times small { display: block; color: #777; max-width: 150px; }
+    .flight .f-stop { margin: 0 14px; font-size: 11px; font-weight: 700; color: #1A374D; text-transform: uppercase; min-width: 90px; }
+    .flight .f-stop .line { height: 2px; background: #1A374D; margin: 3px 0; position: relative; }
+    .flight .f-stop .line:after { content: ""; position: absolute; right: -2px; top: -4px; border: 5px solid transparent; border-left-color: #1A374D; }
+    .flight .f-bag { flex: 1 1 130px; text-align: center; font-size: 13px; color: #555; }
+    .flight .f-price { flex: 1 1 200px; text-align: right; }
+    .flight .f-price .p { font-size: 24px; color: #1A374D; font-weight: 700; }
+    .flight .f-price small { color: #777; display: block; }
+    .flight.selected { background: #f1f6f8; }
+    .flight .f-details { flex: 1 1 100%; display: none; margin-top: 12px; font-size: 14px; color: #555; }
+    .flight .f-details.show { display: block; }
+    .flight .btn-outline-primary { color: #1A374D; border-color: #1A374D; }
+    .flight .btn-outline-primary:hover { color: #fff; background: #1A374D; }
+    @media (max-width: 767px) { .flight .f-price { text-align: left; margin-top: 12px; } .res-summary .res-route { border-right: 0; border-bottom: 2px dashed #e6e6e6; } }
+  </style>
+
+  <div class="hero hero-inner">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-8 mx-auto text-center">
+          <div class="intro-wrap">
+            <h1 class="mb-0">Résultats de recherche</h1>
+            <p class="text-white" id="res-hero">Vols au départ de Dakar, Aéroport international Blaise Diagne (DSS)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="untree_co-section">
+    <div class="container">
+
+      <form class="res-card res-search p-3 mb-4" action="resultats.html" method="get">
+        <input type="hidden" name="depart" value="DSS">
+        <div class="row align-items-center">
+          <div class="col-md-6 col-lg-2 mb-2 mb-lg-0">
+            <input type="text" class="form-control" value="Dakar (DSS)" aria-label="Départ" readonly>
+          </div>
+          <div class="col-md-6 col-lg-3 mb-2 mb-lg-0">
+            <select name="arrivee" id="res-arrivee" class="form-control custom-select" aria-label="Arrivée"></select>
+          </div>
+          <div class="col-md-6 col-lg-3 mb-2 mb-lg-0">
+            <input type="text" class="form-control" name="daterange" id="res-dates" aria-label="Date de départ / de retour">
+          </div>
+          <div class="col-md-6 col-lg-2 mb-2 mb-lg-0">
+            <input type="number" min="1" max="9" class="form-control" name="passagers" id="res-pax" placeholder="Passagers" aria-label="Passagers">
+          </div>
+          <div class="col-lg-2">
+            <input type="submit" class="btn btn-primary btn-block" value="Modifier">
+          </div>
+          <div class="col-12">
+            <label class="control control--checkbox mt-3 mb-0">
+              <span class="caption">Aller-retour (décochez pour un aller simple)</span>
+              <input type="checkbox" name="ar" value="1" id="res-ar" />
+              <div class="control__indicator"></div>
+            </label>
+          </div>
+        </div>
+      </form>
+
+      <div class="res-card res-summary mb-5">
+        <div class="res-route text-center">
+          <span class="icon-flight_takeoff text-primary h3 d-block mb-1"></span>
+          <strong class="d-block mb-2">Résumé de votre voyage</strong>
+          <div id="res-dates-txt" class="mb-2"></div>
+          <div class="h5 mb-0"><span id="res-from">DSS</span> <span class="res-arrow"></span> <span id="res-to"></span></div>
+        </div>
+        <div class="res-total">
+          <div class="mb-2"><span class="icon-users mr-2"></span><span id="res-pax-txt"></span></div>
+          <div id="res-choice" class="text-muted mb-2">Aucun vol sélectionné</div>
+          <div class="d-flex justify-content-between align-items-center">
+            <strong>Total :</strong> <strong class="h5 mb-0 text-primary" id="res-total">&mdash;</strong>
+          </div>
+          <a href="#" id="res-book" class="btn btn-primary btn-block mt-3 d-none" target="_blank" rel="noopener"><span class="icon-whatsapp mr-2"></span>Réserver ce vol sur WhatsApp</a>
+        </div>
+      </div>
+
+      <h2 class="section-title text-center mb-4" id="res-title">Sélectionnez votre vol</h2>
+
+      <div class="res-filters row mb-4">
+        <div class="col-md-4 mb-2">
+          <select class="custom-select" id="f-stops" aria-label="Escales">
+            <option value="all">Escales : toutes</option>
+            <option value="0">Vol direct uniquement</option>
+            <option value="1">Avec escale</option>
+          </select>
+        </div>
+        <div class="col-md-4 mb-2">
+          <select class="custom-select" id="f-airline" aria-label="Compagnies"></select>
+        </div>
+        <div class="col-md-4 mb-2">
+          <select class="custom-select" id="f-sort" aria-label="Trier">
+            <option value="price">Trier : prix croissant</option>
+            <option value="dep">Trier : heure de départ</option>
+            <option value="dur">Trier : durée</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="res-card mb-3">
+        <div class="res-band">Nos meilleurs trajets</div>
+        <div id="res-list"></div>
+      </div>
+      <p class="small text-muted">Prix indicatifs en FCFA, par personne, hors frais de service et sous réserve de disponibilité au moment de la réservation. Horaires donnés à titre d'exemple. Paiement par Wave, Orange Money, espèces en agence ou carte bancaire.</p>
+
+    </div>
+  </div>
+
+  <div class="py-5 cta-section">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-12">
+          <h2 class="mb-2 text-white">Vous ne trouvez pas votre vol ?</h2>
+          <p class="mb-4 lead text-white text-white-opacity">Nos conseillers à Dakar recherchent pour vous d'autres horaires et d'autres compagnies.</p>
+          <p class="mb-0"><a href="contact.html" class="btn btn-outline-white text-white btn-md font-weight-bold">Demander un devis</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="site-footer">
+    <div class="inner first">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-lg-4">
+            <div class="widget">
+              <h3 class="heading">Agence - Billet Avion Dakar</h3>
+              <p>Billets d'avion au départ de Dakar, packages Omra et Hajj, hôtels, visas et assurance voyage : un seul interlocuteur pour tout votre voyage.</p>
+            </div>
+            <div class="widget">
+              <ul class="list-unstyled social">
+                <li><a href="#"><span class="icon-twitter"></span></a></li>
+                <li><a href="#"><span class="icon-instagram"></span></a></li>
+                <li><a href="#"><span class="icon-facebook"></span></a></li>
+                <li><a href="#"><span class="icon-linkedin"></span></a></li>
+                <li><a href="#"><span class="icon-whatsapp"></span></a></li>
+                <li><a href="#"><span class="icon-pinterest"></span></a></li>
+                <li><a href="#"><span class="icon-apple"></span></a></li>
+                <li><a href="#"><span class="icon-google"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-2 pl-lg-5">
+            <div class="widget">
+              <h3 class="heading">Navigation</h3>
+              <ul class="links list-unstyled">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="services.html">Nos services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-2">
+            <div class="widget">
+              <h3 class="heading">Paiement</h3>
+              <ul class="links list-unstyled">
+                <li><a href="#">Wave</a></li>
+                <li><a href="#">Orange Money</a></li>
+                <li><a href="#">Espèces en agence</a></li>
+                <li><a href="#">Carte bancaire</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="widget">
+              <h3 class="heading">Contact</h3>
+              <ul class="list-unstyled quick-info links">
+                <li class="email"><a href="mailto:contact@exemple.sn">contact@exemple.sn</a></li>
+                <li class="phone"><a href="tel:+221770000000">+221 77 000 00 00 (tél. &amp; WhatsApp)</a></li>
+                <li class="address"><a href="contact.html">Dakar, Sénégal</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="inner dark">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-md-8 mb-3 mb-md-0 mx-auto">
+            <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> Agence - Billet Avion Dakar. Tous droits réservés. &mdash; Démo réalisée par Think &amp; Code &middot; [contact]<br>Modèle conçu par <a href="https://untree.co" class="link-highlight">Untree.co</a> <!-- License information: https://untree.co/license/ --> &middot; distribué par <a href="https://themewagon.com" target="_blank" >ThemeWagon</a>
+            </p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="overlayer"></div>
+  <div class="loader">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Chargement...</span>
+    </div>
+  </div>
+
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.fancybox.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/moment.min.js"></script>
+  <script src="js/daterangepicker.js"></script>
+
+  <script src="js/typed.js"></script>
+  
+  <script>
+    // Données d'exemple : tarifs indicatifs (FCFA, par personne, aller simple) et horaires fictifs.
+    var DESTINATIONS = {
+      CDG: { ville: 'Paris', aeroport: 'Paris-Charles de Gaulle', tz: 1, prix: 230000, vols: [
+        ['Air Sénégal', 0, '', '01:15', 350], ['Air France', 0, '', '23:35', 345], ['Royal Air Maroc', 1, 'Casablanca', '02:30', 600], ['Turkish Airlines', 1, 'Istanbul', '22:10', 1010] ] },
+      CMN: { ville: 'Casablanca', aeroport: 'Casablanca Mohammed V', tz: 1, prix: 185000, vols: [
+        ['Royal Air Maroc', 0, '', '03:05', 210], ['Air Sénégal', 0, '', '12:40', 205], ['Royal Air Maroc', 0, '', '19:20', 210] ] },
+      ABJ: { ville: 'Abidjan', aeroport: 'Abidjan Félix-Houphouët-Boigny', tz: 0, prix: 130000, vols: [
+        ['Air Côte d\'Ivoire', 0, '', '08:50', 160], ['Air Sénégal', 0, '', '14:15', 165], ['ASKY', 1, 'Lomé', '10:30', 330] ] },
+      BKO: { ville: 'Bamako', aeroport: 'Bamako-Sénou Modibo Keïta', tz: 0, prix: 100000, vols: [
+        ['Air Sénégal', 0, '', '07:30', 110], ['ASKY', 1, 'Lomé', '06:45', 420], ['Air Côte d\'Ivoire', 1, 'Abidjan', '08:50', 380] ] },
+      CKY: { ville: 'Conakry', aeroport: 'Conakry Gbessia', tz: 0, prix: 105000, vols: [
+        ['Air Sénégal', 0, '', '16:20', 80], ['Air Côte d\'Ivoire', 1, 'Abidjan', '08:50', 360], ['ASKY', 1, 'Lomé', '10:30', 400] ] },
+      IST: { ville: 'Istanbul', aeroport: 'Istanbul Airport', tz: 3, prix: 265000, vols: [
+        ['Turkish Airlines', 0, '', '22:10', 425], ['Royal Air Maroc', 1, 'Casablanca', '03:05', 640] ] },
+      DXB: { ville: 'Dubaï', aeroport: 'Dubaï International', tz: 4, prix: 300000, vols: [
+        ['Turkish Airlines', 1, 'Istanbul', '22:10', 820], ['Royal Air Maroc', 1, 'Casablanca', '03:05', 900], ['Air France', 1, 'Paris', '23:35', 940] ] },
+      JED: { ville: 'Djeddah (Omra)', aeroport: 'Djeddah Roi Abdulaziz', tz: 3, prix: 330000, vols: [
+        ['Air Sénégal', 0, '', '09:40', 390], ['Turkish Airlines', 1, 'Istanbul', '22:10', 760], ['Royal Air Maroc', 1, 'Casablanca', '03:05', 820] ] },
+      BRU: { ville: 'Bruxelles', aeroport: 'Bruxelles-National', tz: 1, prix: 250000, vols: [
+        ['Brussels Airlines', 0, '', '23:55', 360], ['Royal Air Maroc', 1, 'Casablanca', '03:05', 620], ['Air France', 1, 'Paris', '23:35', 560] ] },
+      JFK: { ville: 'New York', aeroport: 'New York JFK', tz: -5, prix: 365000, vols: [
+        ['Royal Air Maroc', 1, 'Casablanca', '03:05', 930], ['Turkish Airlines', 1, 'Istanbul', '22:10', 1500], ['Air France', 1, 'Paris', '23:35', 1060] ] }
+    };
+    var WHATSAPP = '221770000000';
+
+    var params = new URLSearchParams(window.location.search);
+    var code = DESTINATIONS[params.get('arrivee')] ? params.get('arrivee') : 'CDG';
+    var dest = DESTINATIONS[code];
+    var pax = Math.min(9, Math.max(1, parseInt(params.get('passagers'), 10) || 1));
+    var allerRetour = params.has('ar') || !params.has('arrivee');
+    var dates = (params.get('daterange') || '').split(' - ');
+    var dAller = moment(dates[0], 'DD/MM/YYYY', true);
+    var dRetour = moment(dates[1] || '', 'DD/MM/YYYY', true);
+    if (!dAller.isValid()) { dAller = moment().add(14, 'days'); }
+    if (!dRetour.isValid() || dRetour.isBefore(dAller)) { dRetour = dAller.clone().add(7, 'days'); }
+
+    var JOURS = ['dim.', 'lun.', 'mar.', 'mer.', 'jeu.', 'ven.', 'sam.'];
+    function fmtDate(m) { return JOURS[m.day()] + ' ' + m.format('DD/MM/YYYY'); }
+    function fmtPrix(n) { return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' FCFA'; }
+    function fmtDuree(min) { return Math.floor(min / 60) + 'H' + ('0' + (min % 60)).slice(-2); }
+    function fmtHeure(min) { min = ((min % 1440) + 1440) % 1440; return Math.floor(min / 60) + 'h' + ('0' + (min % 60)).slice(-2); }
+
+    // Formulaire de modification pré-rempli
+    var sel = document.getElementById('res-arrivee');
+    Object.keys(DESTINATIONS).forEach(function (k) {
+      var o = document.createElement('option');
+      o.value = k; o.textContent = DESTINATIONS[k].ville + ' (' + k + ')';
+      if (k === code) { o.selected = true; }
+      sel.appendChild(o);
+    });
+    document.getElementById('res-dates').value = allerRetour ? dAller.format('DD/MM/YYYY') + ' - ' + dRetour.format('DD/MM/YYYY') : dAller.format('DD/MM/YYYY') + ' - ' + dAller.format('DD/MM/YYYY');
+    document.getElementById('res-pax').value = pax;
+    document.getElementById('res-ar').checked = allerRetour;
+
+    // Résumé
+    var typeTxt = allerRetour ? 'Aller-retour' : 'Aller simple';
+    document.getElementById('res-hero').textContent = 'Dakar (DSS) → ' + dest.ville + ' (' + code + ') · ' + typeTxt + ' · ' + pax + ' passager' + (pax > 1 ? 's' : '');
+    document.getElementById('res-to').textContent = code;
+    document.getElementById('res-dates-txt').innerHTML = 'Départ : <strong>' + fmtDate(dAller) + '</strong>' + (allerRetour ? '<br>Retour : <strong>' + fmtDate(dRetour) + '</strong>' : '');
+    document.getElementById('res-pax-txt').textContent = pax + ' passager' + (pax > 1 ? 's' : '') + ' · ' + typeTxt + ' · Classe économique';
+    document.getElementById('res-title').textContent = allerRetour ? 'Sélectionnez votre aller-retour' : 'Sélectionnez votre aller';
+
+    var FACTEURS = [1, 1.09, 1.16, 1.24];
+    var vols = dest.vols.map(function (v, i) {
+      var h = v[3].split(':');
+      var dep = parseInt(h[0], 10) * 60 + parseInt(h[1], 10);
+      var prix = Math.round(dest.prix * FACTEURS[i] * (v[1] ? 0.94 : 1) * (allerRetour ? 1.85 : 1) / 5000) * 5000;
+      return { id: i, compagnie: v[0], escales: v[1], via: v[2], dep: dep, duree: v[4], arr: dep + v[4] + dest.tz * 60, prix: prix,
+               bagages: v[0] === 'ASKY' || v[0] === 'Air Côte d\'Ivoire' ? '1 x 23 kg' : '2 x 23 kg' };
+    });
+    var minPrix = Math.min.apply(null, vols.map(function (v) { return v.prix; }));
+    var minDuree = Math.min.apply(null, vols.map(function (v) { return v.duree; }));
+
+    var fAir = document.getElementById('f-airline');
+    fAir.innerHTML = '<option value="all">Compagnies : toutes</option>';
+    vols.map(function (v) { return v.compagnie; }).filter(function (c, i, a) { return a.indexOf(c) === i; }).forEach(function (c) {
+      var o = document.createElement('option'); o.value = c; o.textContent = c; fAir.appendChild(o);
+    });
+
+    var choisi = null;
+    function render() {
+      var stops = document.getElementById('f-stops').value;
+      var air = fAir.value;
+      var tri = document.getElementById('f-sort').value;
+      var liste = vols.filter(function (v) {
+        return (stops === 'all' || String(Math.min(v.escales, 1)) === stops) && (air === 'all' || v.compagnie === air);
+      }).sort(function (a, b) { return tri === 'dep' ? a.dep - b.dep : tri === 'dur' ? a.duree - b.duree : a.prix - b.prix; });
+
+      if (!liste.length) {
+        document.getElementById('res-list').innerHTML = '<p class="p-4 mb-0">Aucun vol ne correspond à ces filtres. <a href="contact.html">Demandez un devis</a> : nous chercherons pour vous.</p>';
+        return;
+      }
+      document.getElementById('res-list').innerHTML = liste.map(function (v) {
+        var badge = v.prix === minPrix ? 'Le moins cher' : (v.duree === minDuree ? 'Le plus rapide' : '');
+        var jour = Math.floor(v.arr / 1440) > 0 ? ' <sup>+1</sup>' : '';
+        return '<div class="flight' + (choisi === v.id ? ' selected' : '') + '">' +
+          (badge ? '<span class="badge-tag">' + badge + '</span>' : '') +
+          '<div class="f-airline">Départ le <strong>' + dAller.format('DD/MM/YYYY') + '</strong><br><span class="icon-flight mr-1"></span><strong>' + v.compagnie + '</strong></div>' +
+          '<div class="f-times"><div><div class="t">' + fmtHeure(v.dep) + '</div><small>Dakar Blaise Diagne (DSS)</small></div>' +
+          '<div class="f-stop">' + (v.escales ? '1 escale' : 'Vol direct') + '<div class="line"></div>' + fmtDuree(v.duree) + '</div>' +
+          '<div><div class="t">' + fmtHeure(v.arr) + jour + '</div><small>' + dest.aeroport + ' (' + code + ')</small></div></div>' +
+          '<div class="f-bag"><span class="icon-suitcase d-block h4 mb-1 text-primary"></span>Bagages inclus<br>' + v.bagages + '</div>' +
+          '<div class="f-price"><small>' + (allerRetour ? 'Aller-retour' : 'Aller') + ' / pers.</small>' +
+          '<small>à partir de</small><div class="p">' + fmtPrix(v.prix) + '</div>' +
+          '<small class="mb-2">TOTAL = ' + fmtPrix(v.prix * pax) + '</small>' +
+          '<button type="button" class="btn btn-outline-primary btn-sm mr-1" data-details="' + v.id + '">Détails</button>' +
+          '<button type="button" class="btn btn-primary btn-sm" data-select="' + v.id + '">Sélectionner</button></div>' +
+          '<div class="f-details" id="details-' + v.id + '">' +
+          (v.escales ? 'Escale à ' + v.via + '. ' : 'Vol direct sans escale. ') + 'Durée totale : ' + fmtDuree(v.duree) + '. Classe économique, bagages en soute : ' + v.bagages + ', bagage cabine : 1 x 8 kg. ' +
+          (allerRetour ? 'Retour le ' + dRetour.format('DD/MM/YYYY') + ' sur ' + v.compagnie + ' (horaires communiqués à la réservation). ' : '') +
+          'Conditions de modification et d\'annulation selon le tarif de la compagnie.</div></div>';
+      }).join('');
+    }
+
+    document.getElementById('res-list').addEventListener('click', function (e) {
+      var d = e.target.getAttribute('data-details');
+      if (d !== null) { document.getElementById('details-' + d).classList.toggle('show'); return; }
+      var s = e.target.getAttribute('data-select');
+      if (s === null) { return; }
+      var v = vols[parseInt(s, 10)];
+      choisi = v.id;
+      document.getElementById('res-choice').innerHTML = '<strong>' + v.compagnie + '</strong> · ' + fmtHeure(v.dep) + ' → ' + fmtHeure(v.arr) + ' · ' + (v.escales ? '1 escale' : 'Vol direct');
+      document.getElementById('res-total').textContent = fmtPrix(v.prix * pax);
+      var msg = 'Bonjour, je souhaite réserver un vol Dakar (DSS) - ' + dest.ville + ' (' + code + ') : ' + typeTxt.toLowerCase() +
+        ', départ le ' + dAller.format('DD/MM/YYYY') + (allerRetour ? ', retour le ' + dRetour.format('DD/MM/YYYY') : '') +
+        ', ' + pax + ' passager(s), ' + v.compagnie + ' ' + fmtHeure(v.dep) + ', prix indicatif ' + fmtPrix(v.prix * pax) + '.';
+      var book = document.getElementById('res-book');
+      book.href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(msg);
+      book.classList.remove('d-none');
+      render();
+      if (window.innerWidth < 992) { document.querySelector('.res-summary').scrollIntoView({ behavior: 'smooth' }); }
+    });
+    ['f-stops', 'f-airline', 'f-sort'].forEach(function (id) { document.getElementById(id).addEventListener('change', render); });
+    render();
+  </script>
+
+  <script src="js/custom.js"></script>
+
+</body>
+
+</html>

@@ -34,3 +34,16 @@ puis d'ouvrir http://localhost:8000.
 Base sur le gabarit libre **Tour** de [Untree.co](https://untree.co/),
 sous licence [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/).
 Voir `README.txt` pour la notice de l'auteur.
+
+## Notifications Discord
+
+L'activité du dépôt est renvoyée dans un salon Discord de l'équipe : tickets
+ouverts, fermés et rouverts, commentaires, commits, branches, et releases.
+
+Le salon n'est pas un canal de décision : ce qui compte reste écrit dans le
+ticket. Discord sert à savoir qu'il s'est passé quelque chose, pas à discuter à
+la place du ticket.
+
+L'adresse du webhook est un secret. Elle vit dans les réglages du dépôt
+(Settings, Webhooks) et ne doit jamais être écrite dans un fichier, un ticket ou
+un message : toute personne qui l'a peut publier dans le salon.
